@@ -1,0 +1,450 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family: "Inter", sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #1e3a5f 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #312e81 0%,
+            transparent 35%
+        ),
+        #080b14;
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.stopwatch {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 35px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(20px);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.header .icon {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+
+    background: rgba(59, 130, 246, 0.15);
+
+    border: 1px solid rgba(59, 130, 246, 0.3);
+
+    color: #60a5fa;
+
+    font-size: 28px;
+}
+
+.header h1 {
+    font-size: 26px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+.header p {
+    margin-top: 7px;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+.timer-box {
+    padding: 30px 15px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    border-radius: 22px;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#timer {
+    font-size: clamp(42px, 10vw, 64px);
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    font-variant-numeric: tabular-nums;
+
+    text-shadow:
+        0 0 25px rgba(96, 165, 250, 0.25);
+}
+
+.timer-label {
+    margin-top: 10px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+}
+
+button {
+    min-height: 52px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+button i {
+    margin-right: 8px;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+
+/* START */
+
+#start {
+    background: #22c55e;
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(34, 197, 94, 0.2);
+}
+
+#start:hover:not(:disabled) {
+    box-shadow:
+        0 12px 25px rgba(34, 197, 94, 0.3);
+}
+
+
+/* STORE */
+
+#store {
+    background: #3b82f6;
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(59, 130, 246, 0.2);
+}
+
+#store:hover:not(:disabled) {
+    box-shadow:
+        0 12px 25px rgba(59, 130, 246, 0.3);
+}
+
+
+/* STOP */
+
+#stop {
+    background: #f59e0b;
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(245, 158, 11, 0.15);
+}
+
+
+/* CLEAR */
+
+#clear {
+    background: #ef4444;
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(239, 68, 68, 0.15);
+}
+
+
+/* DISABLED */
+
+button:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================
+   STORED TIMES HEADER
+========================= */
+
+.laps-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 14px;
+}
+
+.laps-header h2 {
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+.laps-header h2 i {
+    margin-right: 6px;
+
+    color: #60a5fa;
+}
+
+.laps-header span {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   STORED LIST
+========================= */
+
+#listlap {
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    max-height: 210px;
+
+    overflow-y: auto;
+}
+
+
+/* Empty list message */
+
+#listlap:empty::before {
+    content: "No stored times yet";
+
+    display: block;
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: #64748b;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+
+    border-radius: 12px;
+
+    font-size: 13px;
+}
+
+
+/* List Item */
+
+#listlap li {
+    display: flex;
+
+    align-items: center;
+
+    padding: 13px 15px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    color: #cbd5e1;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: background 0.2s ease;
+}
+
+#listlap li:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+#listlap li::before {
+    content: "\f017";
+
+    font-family: "Font Awesome 6 Free";
+
+    font-weight: 900;
+
+    color: #60a5fa;
+
+    margin-right: 10px;
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+#listlap::-webkit-scrollbar {
+    width: 5px;
+}
+
+#listlap::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#listlap::-webkit-scrollbar-thumb {
+    background: #334155;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+
+    margin-top: 25px;
+
+    color: #475569;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .stopwatch {
+        padding: 25px 20px;
+
+        border-radius: 22px;
+    }
+
+    #timer {
+        letter-spacing: 2px;
+    }
+
+    .header h1 {
+        font-size: 23px;
+    }
+
+    button {
+        min-height: 48px;
+
+        font-size: 13px;
+    }
+}
